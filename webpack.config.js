@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const extractCSS = new ExtractTextPlugin('css/[name]-one.css')
 const extractSass = new ExtractTextPlugin('css/[name]-two.css')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -14,15 +15,7 @@ module.exports = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                // options: {
-                //     loaders: {
-                //       css: ExtractTextPlugin.extract({
-                //         use: 'css-loader!sass-loader',
-                //         fallback: 'vue-style-loader'
-                //       })
-                //     }
-                // }
+                loader: 'vue-loader'
             },
             {
                 test: /\.js$/,
@@ -72,7 +65,8 @@ module.exports = {
             filename: './index.html'
         }),
         extractCSS,
-        extractSass
+        extractSass,
+        new UglifyJSPlugin()
     ],
     devServer: {
         historyApiFallback: true,

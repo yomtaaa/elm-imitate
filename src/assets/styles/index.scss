@@ -35,9 +35,13 @@ footer {
 /*
 *   home
 */
-header {
+@mixin header-gradient {
     background: -webkit-gradient(linear, left top, right top, from(#02abfe), to(#0287fe));
     background: gradient(linear, left top, right top, from(#02abfe), to(#0287fe));
+}
+header {
+    overflow: hidden;
+    @include header-gradient;
     padding: .6rem .45rem;
 }
 .loacl-column h1 {
@@ -72,7 +76,12 @@ header {
         outline: none;
     } 
     i {
+        display: inline-block;
+        width: .4rem;
+        height: .4rem;
         margin-right: .1rem;
+        background: url(./assets/imgs/search.png) 0 0 no-repeat;
+        background-size: .4rem;
     }
     i,span {
         color: #aaa;
@@ -187,17 +196,192 @@ header {
     display: inline-block;
     width: 60px;
     height: 14px;
-    background: url(./assets/imgs/star.png) 0 center repeat-x;
+    background: url('./assets/imgs/star.png') 0 center repeat-x;
     background-size: 12px;
     position: absolute;
 }
 .rating-star-yellow {
     width: 90%;
-    background: url(./assets/imgs/yellow_star.png) 0 center repeat-x;
+    background: url('./assets/imgs/yellow_star.png') 0 center repeat-x;
     background-size: 12px;
     position: absolute;
     left: 0;
 }
 .bussiness {
     margin-left: 62px;
+}
+
+/*
+*   receiving address
+*/
+.receiving-address {
+    width: 100%;
+    height: 100%;
+    background-color: #f3f3f3;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+}
+.receiving-address > header {
+    padding: .4rem 0;
+}
+@mixin icon-style($size,$url-img) {
+    width: $size;
+    height: $size;
+    background: url($url-img) center center no-repeat;
+    background-size: $size;
+}
+.return-index {
+    float: left;
+    margin: .08rem .8rem .08rem .4rem;
+}
+.icon-left-btn {
+    display: block;
+    @include icon-style(.5rem,'./assets/imgs/left.png');
+}
+header>.receiving-address-title {
+    float: left;
+    font-size: 18px;
+    color: #fff;
+}
+header>.manage {
+    float: right;
+    font-size: 16px;
+    margin-right: .4rem;
+}
+.receiving-container section {
+    padding: .48rem .48rem 0;
+    background-color: #fff;
+    margin-bottom: .4rem;
+}
+.search-address {
+    height: .94rem;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    .select-address,input {
+        float: left;
+    }
+    .select-address {
+        font-size: .48rem;
+        line-height: .94rem;
+        padding: 0 .6rem;
+    }
+    input {
+        height: inherit;
+        background: url('./assets/imgs/search.png') 0 center no-repeat;
+        background-size: .5rem;
+        padding-left: .6rem;
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+    .icon-more {
+        display: inline-block;
+        @include icon-style(.5rem,'./assets/imgs/more.png');
+        vertical-align: -2px;
+    }
+}
+.local-address { //当前地址
+    padding: .6rem;
+    span.title {
+        display: block;
+        font-size: .48rem;
+        color: #999;
+    }
+}
+.specific-address {
+    overflow: hidden;
+    font-size: .58rem;
+    margin-top: .2rem;
+    .specific-address-name {
+        font-weight: 600;
+    }
+    .local-btn {
+        float: right;
+        color: #489cea;
+    }
+}
+.icon-address {
+    display: inline-block;
+    @include icon-style(.7rem,'./assets/imgs/address.png');
+    vertical-align: -5px;
+}
+.harvest-address { //收货地址
+    padding-top: 0;
+    .specific-address-info {
+        display: block;
+        font-weight: 400;
+    }
+    .username-tel {
+        padding: .4rem 0 .6rem 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .add-address {
+        font-size: .58rem;
+        color: #489cea;
+    }
+}
+section.not-added { //未添加是样式
+    
+    padding-bottom: .48rem;
+    img {
+        display: block;
+        width: 100%;
+    }
+    .add-address-btn {  //新增地址按钮
+        display: block;
+        width: 3rem;
+        font-size: .58rem;
+        color: #fff;
+        text-align: center;
+        padding: .2rem 0;
+        background-color: #0087ff;
+        border-radius: 4px;
+        margin: 0 auto;
+    }
+}
+/**
+*  添加地址信息页面
+*/
+.receiving-container .information-table {
+    padding-top: 0;
+    margin-top: .4rem;
+}
+.information-table-write {
+    width: 100%;
+    font-size: 18px;
+    td {
+        padding: .14rem;
+    }
+    td:first-child {
+        font-weight: 600;
+        width: 20%;
+    }
+    td:last-child {
+        border-bottom: 1px solid #eee;
+    }
+    td.label-underline {
+        border-bottom: none;
+    }
+    input[type="text"] {
+        display: block;
+        color: #ccc;
+    }
+    input[type="button"] {
+        width: 1.6rem;
+        height: .8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-right: .1rem;
+        background-color: transparent;
+    }
+}
+input[type="submit"] {
+    display: block;
+    width: 90%;
+    color: #fff;
+    background-color: #4dc060;
+    padding: .3rem;
+    margin: 0 auto;
 }

@@ -13,6 +13,9 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
 body {
     background-color: #f3f3f3;
 }
+input:focus {
+    outline: none;
+}
 // @mixin prefixer($property, $value, $prefixes: webkit moz) {
 //     #{$property}: $value;
   

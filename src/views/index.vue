@@ -4,7 +4,7 @@
         <section class="loacl-column">
             <h1><router-link to="/consignee" class="loacl-click"><icon name="local" scale="2"></icon><span id="local-name">{{localname}}</span><i class="el-icon-caret-bottom"></i></router-link></h1>
             <button class="search-button">
-                <span><i class="el-icon-search"></i>搜索商家、商家名称</span>
+                <span><i class="icon-search"></i>搜索商家、商家名称</span>
             </button>
         </section>
     </header>
